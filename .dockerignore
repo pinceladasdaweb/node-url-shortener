@@ -1,0 +1,15 @@
+*.md
+.env*
+.git
+.idea
+.config
+.npm
+.github
+.DS_Store
+.gitignore
+.scannerwork
+.editorconfig
+LICENSE
+nodemon.json
+node_modules
+npm-debug.log
