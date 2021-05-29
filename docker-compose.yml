@@ -1,0 +1,32 @@
+version: '3.7'
+
+services:
+  api:
+    container_name: api
+    image: node:16-alpine
+    working_dir: /usr/src/app
+    ports:
+      - '${APP_PORT}:3000'
+    command: npm run dev
+    init: true
+    volumes:
+      - .:/usr/src/app
+    depends_on:
+      - postgres
+
+  postgres:
+    container_name: postgresql
+    image: 'bitnami/postgresql:13'
+    restart: always
+    ports:
+      - '${POSTGRESQL_PORT}:5432'
+    volumes:
+      - postgresql_data:/bitnami/postgresql
+    environment:
+      POSTGRESQL_USER: ${POSTGRESQL_USER}
+      POSTGRESQL_DATABASE: ${POSTGRESQL_DATABASE}
+      POSTGRESQL_PASSWORD: ${POSTGRESQL_PASSWORD}
+
+volumes:
+  postgresql_data:
+    driver: local
