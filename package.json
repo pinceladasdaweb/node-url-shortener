@@ -1,0 +1,56 @@
+{
+  "name": "node-url-shortener",
+  "version": "1.0.0",
+  "description": "A modern and lightweight URL shortener using Node.js",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "./node_modules/nodemon/bin/nodemon.js src/index.js",
+    "start": "node src/index.js",
+    "standard:fix": "standard --fix",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pinceladasdaweb/node-url-shortener.git"
+  },
+  "keywords": [
+    "docker",
+    "api",
+    "fastify",
+    "postgres"
+  ],
+  "author": "Pedro Rogério",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pinceladasdaweb/node-url-shortener/issues"
+  },
+  "homepage": "https://github.com/pinceladasdaweb/node-url-shortener#readme",
+  "devDependencies": {
+    "husky": "^4.3.8",
+    "lint-staged": "^11.0.0",
+    "nodemon": "^2.0.7",
+    "standard": "^16.0.3"
+  },
+  "dependencies": {
+    "@hapi/boom": "9.1.2",
+    "@sentry/node": "^6.4.1",
+    "ajv-errors": "^1.0.1",
+    "ajv-keywords": "^3.5.2",
+    "dotenv": "^10.0.0",
+    "fastify": "^3.17.0",
+    "fastify-cors": "^6.0.1",
+    "fastify-helmet": "^5.3.1",
+    "fastify-plugin": "^3.0.0",
+    "fastify-postgres": "^3.5.0",
+    "http-errors": "^1.8.0",
+    "pino-pretty": "^5.0.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.js": "standard"
+  }
+}
