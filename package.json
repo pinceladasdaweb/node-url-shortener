@@ -44,7 +44,7 @@
     "fastify-plugin": "^3.0.0",
     "fastify-postgres": "^3.5.0",
     "http-errors": "^1.8.0",
-    "pino-pretty": "^5.0.1"
+    "pino-pretty": "^5.0.2"
   },
   "husky": {
     "hooks": {
