@@ -3,7 +3,8 @@
   "ignore": [
     ".git",
     "node_modules/**/node_modules",
-    ".editorconfig"
+    ".editorconfig",
+    "migrations"
   ],
   "verbose": true,
   "execMap": {
