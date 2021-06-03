@@ -3,8 +3,8 @@ CREATE TABLE IF NOT EXISTS urls (
   url TEXT NOT NULL,
   alias TEXT UNIQUE NOT NULL,
   private BOOL DEFAULT FALSE,
-  count BIGINT,
-  created_at DATE NOT NULL DEFAULT CURRENT_DATE,
+  count BIGINT DEFAULT 0,
+  created_at TIMESTAMP without time zone DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY ( id )
 );
 
