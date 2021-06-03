@@ -7,6 +7,7 @@
     "dev": "./node_modules/nodemon/bin/nodemon.js src/index.js",
     "start": "node src/index.js",
     "standard:fix": "standard --fix",
+    "migrate:up": "node run-migrations.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -45,7 +46,8 @@
     "fastify-postgres": "^3.5.0",
     "fastify-redis": "^4.3.0",
     "http-errors": "^1.8.0",
-    "pino-pretty": "^5.0.2"
+    "pino-pretty": "^5.0.2",
+    "postgres-migrations": "^5.1.1"
   },
   "husky": {
     "hooks": {
