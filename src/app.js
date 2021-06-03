@@ -1,6 +1,8 @@
 const {
   LOG_LEVEL,
   NODE_ENV,
+  REDIS_PORT,
+  REDIS_PASSWORD,
   POSTGRESQL_HOST,
   POSTGRESQL_PORT,
   POSTGRESQL_USER,
@@ -46,6 +48,11 @@ const app = async () => {
     logger: logger[NODE_ENV]
   })
 
+  await fastify.register(require('fastify-redis'), {
+    host: 'redis',
+    port: REDIS_PORT,
+    password: REDIS_PASSWORD
+  })
   await fastify.register(require('fastify-postgres'), {
     connectionString: `postgres://${POSTGRESQL_USER}:${POSTGRESQL_PASSWORD}@${POSTGRESQL_HOST}:${POSTGRESQL_PORT}/${POSTGRESQL_DATABASE}`
   })
