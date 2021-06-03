@@ -1,0 +1,10 @@
+CREATE TABLE IF NOT EXISTS urls (
+  id BIGSERIAL,
+  url TEXT NOT NULL,
+  alias TEXT UNIQUE NOT NULL,
+  private BOOL DEFAULT FALSE,
+  created_at DATE NOT NULL DEFAULT CURRENT_DATE,
+  PRIMARY KEY ( id )
+);
+
+CREATE INDEX urls_alias_idx ON urls(alias);
