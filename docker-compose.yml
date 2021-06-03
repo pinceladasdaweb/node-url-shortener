@@ -12,6 +12,7 @@ services:
     volumes:
       - .:/usr/src/app
     depends_on:
+      - redis
       - postgres
 
   postgres:
@@ -27,6 +28,19 @@ services:
       POSTGRESQL_DATABASE: ${POSTGRESQL_DATABASE}
       POSTGRESQL_PASSWORD: ${POSTGRESQL_PASSWORD}
 
+  redis:
+    container_name: redis
+    image: 'bitnami/redis:6.2'
+    restart: always
+    ports:
+      - '${REDIS_PORT}:6379'
+    volumes:
+      - redis_data:/bitnami/redis/data
+    environment:
+      REDIS_PASSWORD: ${REDIS_PASSWORD}
+
 volumes:
   postgresql_data:
+    driver: local
+  redis_data:
     driver: local
