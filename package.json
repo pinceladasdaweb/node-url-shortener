@@ -47,7 +47,9 @@
     "fastify-redis": "^4.3.0",
     "http-errors": "^1.8.0",
     "pino-pretty": "^5.0.2",
-    "postgres-migrations": "^5.1.1"
+    "postgres-migrations": "^5.1.1",
+    "simdjson": "^0.5.0",
+    "slow-json-stringify": "^2.0.1"
   },
   "husky": {
     "hooks": {
