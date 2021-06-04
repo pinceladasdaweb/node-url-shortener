@@ -46,6 +46,7 @@
     "fastify-postgres": "^3.5.0",
     "fastify-redis": "^4.3.0",
     "http-errors": "^1.8.0",
+    "pg": "^8.6.0",
     "pino-pretty": "^5.0.2",
     "postgres-migrations": "^5.1.1",
     "simdjson": "^0.5.0",
