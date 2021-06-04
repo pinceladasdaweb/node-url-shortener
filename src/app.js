@@ -11,6 +11,7 @@ const {
   POSTGRESQL_DATABASE,
   POSTGRESQL_PASSWORD
 } = require('./environment')
+const pg = require('pg')
 const Fastify = require('fastify')
 
 const logger = {
@@ -57,7 +58,8 @@ const app = async () => {
     namespace: REDIS_NAMESPACE
   })
   await fastify.register(require('fastify-postgres'), {
-    connectionString: `postgres://${POSTGRESQL_USER}:${POSTGRESQL_PASSWORD}@${POSTGRESQL_HOST}:${POSTGRESQL_PORT}/${POSTGRESQL_DATABASE}`
+    connectionString: `postgres://${POSTGRESQL_USER}:${POSTGRESQL_PASSWORD}@${POSTGRESQL_HOST}:${POSTGRESQL_PORT}/${POSTGRESQL_DATABASE}`,
+    pg
   })
   await fastify.register(require('fastify-etag'))
   await fastify.register(require('fastify-helmet'), {
