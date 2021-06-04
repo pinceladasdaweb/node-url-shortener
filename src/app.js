@@ -11,6 +11,11 @@ const {
   POSTGRESQL_DATABASE,
   POSTGRESQL_PASSWORD
 } = require('./environment')
+const {
+  NOT_FOUND,
+  INTERNAL_SERVER_ERROR
+} = require('./errors')
+const pg = require('pg')
 const Fastify = require('fastify')
 
 const logger = {
@@ -57,7 +62,8 @@ const app = async () => {
     namespace: REDIS_NAMESPACE
   })
   await fastify.register(require('fastify-postgres'), {
-    connectionString: `postgres://${POSTGRESQL_USER}:${POSTGRESQL_PASSWORD}@${POSTGRESQL_HOST}:${POSTGRESQL_PORT}/${POSTGRESQL_DATABASE}`
+    connectionString: `postgres://${POSTGRESQL_USER}:${POSTGRESQL_PASSWORD}@${POSTGRESQL_HOST}:${POSTGRESQL_PORT}/${POSTGRESQL_DATABASE}`,
+    pg
   })
   await fastify.register(require('fastify-etag'))
   await fastify.register(require('fastify-helmet'), {
@@ -84,7 +90,7 @@ const app = async () => {
 
     reply.status(404).send({
       statusCode: 404,
-      error: 'Not Found',
+      error: NOT_FOUND,
       message: `Route ${request.method}:${request.raw.url} not found`
     })
   })
@@ -98,7 +104,7 @@ const app = async () => {
 
     reply.status(code).send({
       statusCode: code,
-      error: err.name ?? 'Internal server error',
+      error: err.name ?? INTERNAL_SERVER_ERROR,
       message: err.message ?? err
     })
   })
