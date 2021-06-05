@@ -1,4 +1,5 @@
 const apiRoutes = async (app, options) => {
+  app.register(require('./hash'))
   app.register(require('./encode'), { prefix: 'encode' })
   app.get('/', async (request, reply) => {
     return {
