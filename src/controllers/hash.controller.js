@@ -32,6 +32,10 @@ const redirect = async function (request, reply) {
 
       const row = rows.shift()
 
+      if (row.private) {
+        return NotFound(NOT_FOUND)
+      }
+
       const stringify = sjs({
         url: attr('string'),
         alias: attr('string'),
