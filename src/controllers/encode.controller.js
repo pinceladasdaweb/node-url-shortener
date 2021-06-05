@@ -37,7 +37,7 @@ const encode = async function (request, reply) {
       count: attr('number')
     })
 
-    await this.redis[REDIS_NAMESPACE].set(hash, stringify(pick(row, ['url', 'alias', 'private', 'count'])), 'ex', 3 * 24 * 60 * 60 * 1000)
+    await this.redis[REDIS_NAMESPACE].set(hash, stringify(pick(row, ['url', 'alias', 'private', 'count'])), 'ex', 3 * 24 * 60 * 60)
 
     reply.code(201).send(row)
   } catch (err) {
