@@ -24,7 +24,7 @@ const redirect = async function (request, reply) {
       reply.code(302).redirect(parsedJSON.url)
     } else {
       const id = Base62.decode(hash)
-      const { rows } = await request.pg.query('SELECT id, url, alias, private, count FROM urls WHERE id=$1', [id])
+      const { rows } = await this.pg.query('SELECT id, url, alias, private, count FROM urls WHERE id=$1', [id])
 
       if (Array.isArray(rows) && !rows.length) {
         return NotFound(NOT_FOUND)
@@ -45,6 +45,42 @@ const redirect = async function (request, reply) {
   }
 }
 
+const stats = async function (request, reply) {
+  try {
+    const { hash } = request.params
+
+    const jsonString = await this.redis[REDIS_NAMESPACE].get(hash)
+
+    if (jsonString) {
+      const parsedJSON = parseJson(jsonString)
+
+      if (parsedJSON.private) {
+        return NotFound(NOT_FOUND)
+      }
+
+      reply.send({ count: parsedJSON.count })
+    } else {
+      const id = Base62.decode(hash)
+      const { rows } = await this.pg.query('SELECT count FROM urls WHERE id=$1', [id])
+
+      if (Array.isArray(rows) && !rows.length) {
+        return NotFound(NOT_FOUND)
+      }
+
+      const row = rows.shift()
+
+      if (row.private) {
+        return NotFound(NOT_FOUND)
+      }
+
+      reply.send({ count: row.count })
+    }
+  } catch (err) {
+    throw boom.boomify(err)
+  }
+}
+
 module.exports = {
+  stats,
   redirect
 }
