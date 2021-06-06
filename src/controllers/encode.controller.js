@@ -2,11 +2,11 @@ const {
   REDIS_NAMESPACE
 } = require('../environment')
 const boom = require('@hapi/boom')
-const { pick, Base62 } = require('../utils')
 const { INVALID_URI } = require('../errors')
 const { createUrlRegex } = require('@regex/url')
 const { sjs, attr } = require('slow-json-stringify')
 const { UnprocessableEntity } = require('http-errors')
+const { daysToSeconds, pick, Base62 } = require('../utils')
 
 const encode = async function (request, reply) {
   try {
@@ -37,7 +37,7 @@ const encode = async function (request, reply) {
       count: attr('number')
     })
 
-    await this.redis[REDIS_NAMESPACE].set(hash, stringify(pick(row, ['url', 'alias', 'private', 'count'])), 'ex', 3 * 24 * 60 * 60)
+    await this.redis[REDIS_NAMESPACE].set(hash, stringify(pick(row, ['url', 'alias', 'private', 'count'])), 'ex', daysToSeconds(3))
 
     reply.code(201).send(row)
   } catch (err) {

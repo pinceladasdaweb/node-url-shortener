@@ -5,8 +5,8 @@ const boom = require('@hapi/boom')
 const parseJson = require('parse-json')
 const { NOT_FOUND } = require('../errors')
 const { NotFound } = require('http-errors')
-const { pick, Base62 } = require('../utils')
 const { sjs, attr } = require('slow-json-stringify')
+const { daysToSeconds, pick, Base62 } = require('../utils')
 
 const redirect = async function (request, reply) {
   try {
@@ -43,7 +43,7 @@ const redirect = async function (request, reply) {
         count: attr('number')
       })
 
-      await this.redis[REDIS_NAMESPACE].set(hash, stringify(pick(row, ['url', 'alias', 'private', 'count'])), 'ex', 3 * 24 * 60 * 60)
+      await this.redis[REDIS_NAMESPACE].set(hash, stringify(pick(row, ['url', 'alias', 'private', 'count'])), 'ex', daysToSeconds(3))
 
       reply.code(302).redirect(row.url)
     }
