@@ -3,8 +3,8 @@ const {
 } = require('../environment')
 const boom = require('@hapi/boom')
 const { INVALID_URI } = require('../errors')
+const schema = require('./concerns/sjs-schema')
 const { createUrlRegex } = require('@regex/url')
-const { sjs, attr } = require('slow-json-stringify')
 const { UnprocessableEntity } = require('http-errors')
 const { daysToSeconds, pick, Base62 } = require('../utils')
 
@@ -30,14 +30,7 @@ const encode = async function (request, reply) {
 
     const row = insert.shift()
 
-    const stringify = sjs({
-      url: attr('string'),
-      alias: attr('string'),
-      private: attr('boolean'),
-      count: attr('number')
-    })
-
-    await this.redis[REDIS_NAMESPACE].set(hash, stringify(pick(row, ['url', 'alias', 'private', 'count'])), 'ex', daysToSeconds(3))
+    await this.redis[REDIS_NAMESPACE].set(hash, schema(pick(row, ['url', 'alias', 'private', 'count'])), 'ex', daysToSeconds(3))
 
     reply.code(201).send(row)
   } catch (err) {
