@@ -18,13 +18,13 @@ const encode = async function (request, reply) {
       return UnprocessableEntity(INVALID_URI)
     }
 
-    const { rows } = await request.pg.query("SELECT nextval(pg_get_serial_sequence('urls', 'id')) as next_id")
+    const { rows } = await this.pg.query("SELECT nextval(pg_get_serial_sequence('urls', 'id')) as next_id")
     const [{ next_id: nextId }] = rows
     const hash = Base62.encode(nextId)
 
     const {
       rows: insert
-    } = await request.pg.query('INSERT INTO urls(id, url, alias, private) VALUES($1, $2, $3, $4) RETURNING *',
+    } = await this.pg.query('INSERT INTO urls(id, url, alias, private) VALUES($1, $2, $3, $4) RETURNING *',
       [nextId, url, hash, isPrivate]
     )
 
