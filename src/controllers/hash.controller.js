@@ -5,8 +5,8 @@ const boom = require('@hapi/boom')
 const parseJson = require('parse-json')
 const { NOT_FOUND } = require('../errors')
 const { NotFound } = require('http-errors')
-const schema = require('./concerns/sjs-schema')
-const { daysToSeconds, pick, Base62 } = require('../utils')
+const { daysToSeconds, Base62 } = require('../utils')
+const { schema, updateCounter } = require('./concerns')
 
 const redirect = async function (request, reply) {
   try {
@@ -20,6 +20,8 @@ const redirect = async function (request, reply) {
       if (parsedJSON.private) {
         return NotFound(NOT_FOUND)
       }
+
+      await updateCounter(this.redis[REDIS_NAMESPACE], parsedJSON)
 
       reply.code(302).redirect(parsedJSON.url)
     } else {
@@ -36,7 +38,7 @@ const redirect = async function (request, reply) {
         return NotFound(NOT_FOUND)
       }
 
-      await this.redis[REDIS_NAMESPACE].set(hash, schema(pick(row, ['url', 'alias', 'private', 'count'])), 'ex', daysToSeconds(3))
+      await this.redis[REDIS_NAMESPACE].set(hash, schema({ ...row, count: Number(row.count) + 1 }), 'ex', daysToSeconds(3))
 
       reply.code(302).redirect(row.url)
     }
