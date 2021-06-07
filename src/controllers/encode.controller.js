@@ -2,8 +2,8 @@ const {
   REDIS_NAMESPACE
 } = require('../environment')
 const boom = require('@hapi/boom')
+const { schema } = require('./concerns')
 const { INVALID_URI } = require('../errors')
-const schema = require('./concerns/sjs-schema')
 const { createUrlRegex } = require('@regex/url')
 const { UnprocessableEntity } = require('http-errors')
 const { daysToSeconds, pick, Base62 } = require('../utils')
