@@ -32,7 +32,7 @@ const redirect = async function (request, reply) {
         return NotFound(NOT_FOUND)
       }
 
-      const row = rows.shift()
+      const [row] = rows
 
       if (row.private) {
         return NotFound(NOT_FOUND)
