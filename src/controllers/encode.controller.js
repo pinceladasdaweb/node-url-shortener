@@ -2,8 +2,8 @@ const {
   REDIS_NAMESPACE
 } = require('../environment')
 const boom = require('@hapi/boom')
+const { schema } = require('./concerns')
 const { INVALID_URI } = require('../errors')
-const schema = require('./concerns/sjs-schema')
 const { createUrlRegex } = require('@regex/url')
 const { UnprocessableEntity } = require('http-errors')
 const { daysToSeconds, pick, Base62 } = require('../utils')
@@ -23,12 +23,10 @@ const encode = async function (request, reply) {
     const hash = Base62.encode(nextId)
 
     const {
-      rows: insert
+      rows: [row]
     } = await this.pg.query('INSERT INTO urls(id, url, alias, private) VALUES($1, $2, $3, $4) RETURNING *',
       [nextId, url, hash, isPrivate]
     )
-
-    const row = insert.shift()
 
     await this.redis[REDIS_NAMESPACE].set(hash, schema(pick(row, ['url', 'alias', 'private', 'count'])), 'ex', daysToSeconds(3))
 
