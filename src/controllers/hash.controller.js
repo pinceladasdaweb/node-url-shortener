@@ -2,11 +2,11 @@ const {
   REDIS_NAMESPACE
 } = require('../environment')
 const boom = require('@hapi/boom')
+const { Base62 } = require('../utils')
 const parseJson = require('parse-json')
 const { NOT_FOUND } = require('../errors')
 const { NotFound } = require('http-errors')
-const { daysToSeconds, Base62 } = require('../utils')
-const { schema, updateCounter } = require('./concerns')
+const { updateCounter } = require('./concerns')
 
 const redirect = async function (request, reply) {
   try {
@@ -38,7 +38,7 @@ const redirect = async function (request, reply) {
         return NotFound(NOT_FOUND)
       }
 
-      await this.redis[REDIS_NAMESPACE].set(hash, schema({ ...row, count: Number(row.count) + 1 }), 'ex', daysToSeconds(3))
+      await updateCounter(this.redis[REDIS_NAMESPACE], row)
 
       reply.code(302).redirect(row.url)
     }
