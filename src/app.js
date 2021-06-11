@@ -17,6 +17,8 @@ const {
 } = require('./errors')
 const pg = require('pg')
 const Fastify = require('fastify')
+const updateCounter = require('./cronjobs')
+const FastifyCron = require('fastify-cron')
 
 const logger = {
   development: {
@@ -55,6 +57,15 @@ const app = async () => {
     logger: logger[NODE_ENV]
   })
 
+  await fastify.register(FastifyCron, {
+    jobs: [
+      {
+        name: 'updateCounter',
+        cronTime: '*/15 * * * *',
+        onTick: server => updateCounter(server)
+      }
+    ]
+  })
   await fastify.register(require('fastify-redis'), {
     host: REDIS_HOST,
     port: REDIS_PORT,
