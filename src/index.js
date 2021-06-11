@@ -5,11 +5,15 @@ server()
   .then(app => {
     app.listen(APP_PORT, '0.0.0.0')
       .then(_ => {
+        app.cron.startAllJobs()
+
         process.on('SIGINT', () => {
+          app.cron.stopAllJobs()
           app.close()
           process.exit(0)
         })
           .on('SIGTERM', () => {
+            app.cron.stopAllJobs()
             app.close()
             process.exit(0)
           })
