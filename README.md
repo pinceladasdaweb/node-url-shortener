@@ -63,6 +63,7 @@ docker logs -f api
 | `/`                       | `GET`                   | `Healthcheck`             |
 | `/encode    `             | `POST`                  | `Encode URL`              |
 | `/:hash         `         | `GET`                   | `Redirect to encoded URL` |
+| `/:hash         `         | `PATCH`                 | `Update private property` |
 | `/:hash/stats`            | `GET`                   | `Stats of encoded URL`    |
 
 
