@@ -1,6 +1,6 @@
 {
   "name": "node-url-shortener",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A modern and lightweight URL shortener using Node.js",
   "main": "src/index.js",
   "scripts": {
