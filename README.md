@@ -106,6 +106,25 @@ curl -i --request POST 'http://localhost:3000/encode' \
 }
 ```
 
+- #### Update private property
+
+`Request`
+```bash
+curl -i --request PATCH 'http://localhost:3000/1C' \
+  --header 'Content-Type: application/json' \
+  --data-raw '{,
+    "private": true
+  }'
+```
+
+`Response`
+```bash
+{
+  "updated": true,
+  "private": true
+}
+```
+
 - #### Get Stats of encoded URL
 
 `Request`
