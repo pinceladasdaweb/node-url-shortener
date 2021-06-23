@@ -51,7 +51,7 @@
     "parse-json": "^5.2.0",
     "pg": "^8.6.0",
     "pino-pretty": "^5.0.2",
-    "postgres-migrations": "^5.1.1",
+    "postgres-migrations": "^5.2.0",
     "slow-json-stringify": "^2.0.1"
   },
   "husky": {
