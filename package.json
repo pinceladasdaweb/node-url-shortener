@@ -39,7 +39,7 @@
     "ajv-errors": "^1.0.1",
     "ajv-keywords": "^3.5.2",
     "dotenv": "^10.0.0",
-    "fastify": "^3.20.2",
+    "fastify": "^3.21.0",
     "fastify-cors": "^6.0.2",
     "fastify-cron": "^1.1.2",
     "fastify-etag": "^2.1.0",
