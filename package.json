@@ -35,11 +35,11 @@
   "dependencies": {
     "@hapi/boom": "^9.1.4",
     "@regex/url": "^1.0.0",
-    "@sentry/node": "^6.12.0",
+    "@sentry/node": "^6.13.2",
     "ajv-errors": "^1.0.1",
     "ajv-keywords": "^3.5.2",
     "dotenv": "^10.0.0",
-    "fastify": "^3.21.1",
+    "fastify": "^3.21.3",
     "fastify-cors": "^6.0.2",
     "fastify-cron": "^1.1.2",
     "fastify-etag": "^2.1.0",
@@ -50,7 +50,7 @@
     "http-errors": "^1.8.0",
     "parse-json": "^5.2.0",
     "pg": "^8.7.1",
-    "pino-pretty": "^7.0.0",
+    "pino-pretty": "^7.0.1",
     "postgres-migrations": "^5.3.0",
     "slow-json-stringify": "^2.0.1"
   },
