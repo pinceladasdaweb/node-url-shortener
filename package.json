@@ -29,7 +29,7 @@
   "devDependencies": {
     "husky": "^4.3.8",
     "lint-staged": "^11.1.2",
-    "nodemon": "^2.0.12",
+    "nodemon": "^2.0.13",
     "standard": "^16.0.3"
   },
   "dependencies": {
