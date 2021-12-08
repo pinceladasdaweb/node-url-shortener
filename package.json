@@ -41,7 +41,7 @@
     "dotenv": "^10.0.0",
     "fastify": "^3.24.1",
     "fastify-cors": "^6.0.2",
-    "fastify-cron": "^1.1.2",
+    "fastify-cron": "^1.2.0",
     "fastify-etag": "^2.1.0",
     "fastify-helmet": "^5.3.2",
     "fastify-plugin": "^3.0.0",
