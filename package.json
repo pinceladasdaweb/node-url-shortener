@@ -47,7 +47,7 @@
     "fastify-plugin": "^3.0.0",
     "fastify-postgres": "^3.6.0",
     "fastify-redis": "^4.3.3",
-    "http-errors": "^1.8.1",
+    "http-errors": "^2.0.0",
     "parse-json": "^6.0.2",
     "pg": "^8.7.1",
     "pino-pretty": "^7.3.0",
