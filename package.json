@@ -28,7 +28,7 @@
   "homepage": "https://github.com/pinceladasdaweb/node-url-shortener#readme",
   "devDependencies": {
     "husky": "^4.3.8",
-    "lint-staged": "^12.2.0",
+    "lint-staged": "^12.2.1",
     "nodemon": "^2.0.15",
     "standard": "^16.0.4"
   },
@@ -39,7 +39,7 @@
     "ajv-errors": "^1.0.1",
     "ajv-keywords": "^3.5.2",
     "dotenv": "^14.2.0",
-    "fastify": "^3.26.0",
+    "fastify": "^3.27.0",
     "fastify-cors": "^6.0.2",
     "fastify-cron": "^1.2.0",
     "fastify-etag": "^2.1.0",
