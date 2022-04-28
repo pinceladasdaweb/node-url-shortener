@@ -45,7 +45,7 @@
     "fastify-etag": "^2.1.0",
     "fastify-helmet": "^7.0.1",
     "fastify-plugin": "^3.0.1",
-    "fastify-postgres": "^3.6.0",
+    "fastify-postgres": "^3.7.0",
     "fastify-redis": "^4.3.3",
     "http-errors": "^2.0.0",
     "parse-json": "^6.0.2",
