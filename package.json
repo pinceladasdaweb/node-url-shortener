@@ -33,7 +33,7 @@
     "standard": "^17.0.0"
   },
   "dependencies": {
-    "@hapi/boom": "^9.1.4",
+    "@hapi/boom": "^10.0.0",
     "@regex/url": "^1.0.0",
     "@sentry/node": "^6.19.7",
     "ajv-errors": "^1.0.1",
