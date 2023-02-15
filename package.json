@@ -28,7 +28,7 @@
   "homepage": "https://github.com/pinceladasdaweb/node-url-shortener#readme",
   "devDependencies": {
     "husky": "^4.3.8",
-    "lint-staged": "^13.1.1",
+    "lint-staged": "^13.1.2",
     "nodemon": "^2.0.20",
     "standard": "^17.0.0"
   },
