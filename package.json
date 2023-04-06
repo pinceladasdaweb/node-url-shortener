@@ -37,7 +37,7 @@
     "@regex/url": "^1.0.0",
     "@sentry/node": "^7.47.0",
     "ajv-errors": "^1.0.1",
-    "ajv-keywords": "^3.5.2",
+    "ajv-keywords": "^5.1.0",
     "dotenv": "^16.0.3",
     "fastify": "^4.15.0",
     "fastify-cors": "^6.1.0",
