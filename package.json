@@ -36,7 +36,7 @@
     "@hapi/boom": "^10.0.1",
     "@regex/url": "^1.0.0",
     "@sentry/node": "^7.47.0",
-    "ajv-errors": "^1.0.1",
+    "ajv-errors": "^3.0.0",
     "ajv-keywords": "^3.5.2",
     "dotenv": "^16.0.3",
     "fastify": "^4.15.0",
