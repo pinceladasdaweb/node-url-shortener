@@ -35,7 +35,7 @@
   "dependencies": {
     "@hapi/boom": "^10.0.1",
     "@regex/url": "^1.0.0",
-    "@sentry/node": "^7.53.1",
+    "@sentry/node": "^7.54.0",
     "ajv-errors": "^1.0.1",
     "ajv-keywords": "^3.5.2",
     "dotenv": "^16.1.3",
